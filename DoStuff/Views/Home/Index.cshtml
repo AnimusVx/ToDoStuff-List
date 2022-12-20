@@ -1,0 +1,37 @@
+﻿@model TodoListViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "DoStuff";
+}
+
+
+
+<div class="content">
+    <div class="list">
+        <h3>Your List</h3>
+        <form method="post" asp-action="Add" class="list-add">
+            <input type="text" name="title" />
+            <button><i class="fa-solid fa-plus"></i></button>
+        </form>
+        <div class="sort"></div>
+        <div class="list-items">
+            @foreach (var item in Model.Lists)
+            {
+                <div class="item">
+                    <div class="item-body">
+                        <div class="list-content"><p>@(item.Title ?? "No Title")</p></div>
+                        <div class="actions">
+                            <a asp-action="Delete" asp-controller="Home" asp-route-listId="@item.Id"><i class="fa-solid fa-trash icon"></i></a>
+                        </div>
+                        <a class="more" asp-action="Index" asp-controller="Todo" asp-route-listId="@item.Id">
+                            <span>More</span>
+                            <i class="fa-solid fa-angles-right"></i>
+                        </a>
+                    </div>
+                    <div class="time">@item.CreatedDate</div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

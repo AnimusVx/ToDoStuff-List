@@ -1,0 +1,45 @@
+﻿@model TodoViewModel
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "DoStuff";
+}
+
+<div class="content">
+    <div class="list">
+        <h3>@Model.Title</h3>
+        <form method="post" asp-action="Add" class="list-add">
+            <input type="hidden" name="listId"  value="@Model.ListId"/>
+            <input type="text" name="content" />
+            <button><i class="fa-solid fa-plus"></i></button>
+        </form>
+        <div class="sort"></div>
+        <div class="list-items">
+            @{int i = 0;}
+            @foreach(var item in Model.Items) {
+                i++;
+                <div class="item">
+                    <div class="item-body">
+                        <div>
+                            <input type="checkbox" class="cbx" id="cbx-@i" style="display: none;" @(item.IsDone ? "checked" : "") />
+                            <label for="cbx-@i" class="check">
+                                <a asp-action="Check" asp-controller="Todo" asp-route-itemId="@item.Id" asp-route-listId="@Model.ListId">
+                                <svg width="18px" height="18px" viewBox="0 0 18 18">
+                                    <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
+                                    <polyline points="1 9 7 14 15 4"></polyline>
+                                </svg>
+                            </a>
+                            </label>
+                        </div>
+                        <div class="list-content"><p>@item.Content</p></div>
+                        <div class="actions">
+                            <a asp-action="Delete" asp-controller="Todo" asp-route-itemId="@item.Id" asp-route-listId="@Model.ListId"><i class="fa-solid fa-trash icon"></i></a>
+                        </div>
+                    </div>
+                    <div class="time">@item.CreatedDate</div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,193 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+:root {
+    --main-color: #0d2075;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+nav {
+    display: flex;
+    padding: 20px 100px;
+    box-shadow: 0 0 5px #777;
+}
+
+h2 {
+    font-size: 1.4em;
+    color: var(--main-color);
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.list-add {
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    display: flex;
+    margin-top: 10px;
+}
+
+    .list-add > input {
+        border: none;
+        outline: none;
+        font-size: 20px;
+        flex: 8;
+        margin: 0px 10px;
+        padding: 10px;
+    }
+
+    .list-add > button {
+        flex: 2;
+        font-size: 20px;
+        border: none;
+        background-color: var(--main-color);
+        color: #fff;
+        cursor: pointer;
+    }
+
+.list-items {
+    padding: 30px 0;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    padding: 20px 30px;
+    max-width: 100%;
+    margin: 10px 0;
+}
+
+.time {
+    font-size: 12px;
+    align-self: end;
+    color: #666;
+}
+
+.item-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icon {
+    font-size: 20px;
+    color: #da3e3e;
+}
+
+.list-content {
+    width: 100%;
+}
+
+.list-content>p {
+    padding: 10px 15px;
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #333;
+}
+
+.more {
+    text-decoration: none;
+    color: var(--main-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+
+}
+.more>span{
+    padding: 3px;
+    padding-bottom: 5px;
+}
+
+.check {
+    display: flex;
+    cursor: pointer;
+    position: relative;
+    margin: auto;
+    width: 22px;
+    height: 22px;
+    -webkit-tap-highlight-color: transparent;
+    transform: translate3d(0, 0, 0);
+}
+
+    .check:before {
+        display: flex;
+        content: "";
+        position: absolute;
+        top: -15px;
+        left: -15px;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: rgba(34,50,84,0.03);
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+
+    .check svg {
+        position: relative;
+        z-index: 1;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke: #c8ccd4;
+        stroke-width: 1.5;
+        transform: translate3d(0, 0, 0);
+        transition: all 0.2s ease;
+    }
+
+        .check svg path {
+            stroke-dasharray: 60;
+            stroke-dashoffset: 0;
+        }
+
+        .check svg polyline {
+            stroke-dasharray: 22;
+            stroke-dashoffset: 66;
+        }
+
+    .check:hover:before {
+        opacity: 1;
+    }
+
+    .check:hover svg {
+        stroke: #4285f4;
+    }
+
+.cbx:checked + .check svg {
+    stroke: #4285f4;
+}
+
+    .cbx:checked + .check svg path {
+        stroke-dashoffset: 60;
+        transition: all 0.3s linear;
+    }
+
+    .cbx:checked + .check svg polyline {
+        stroke-dashoffset: 42;
+        transition: all 0.2s linear;
+        transition-delay: 0.15s;
+    }
+
+label>a{
+    width: 100%;
+    height: 100%;
+}
